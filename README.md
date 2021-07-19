@@ -36,7 +36,7 @@
 
 [StatelessWidget과 StatefulWidget]: https://here4you.tistory.com/220
 
-## 2. Basic Widgets / Classes
+# 2. Basic Widgets / Classes
 - [Scaffold] 
   ![image](https://user-images.githubusercontent.com/63829204/126207210-64988043-396c-432d-87a8-617a9b554187.png)
   Scaffold 위젯은 말 그대로 발판이다. 이 발판 위에 여러 위젯을 배치하는 것이다. 플러터 앱을 만들었을 때 하얀 바탕이 바로 Scaffold이다. (원래는 검은 바탕이다...!) 
@@ -75,8 +75,10 @@
 - [ElevatedButton]
     ![image](https://user-images.githubusercontent.com/63829204/126202802-757c75bc-23d0-4b0c-b3bb-4af15f69e5fc.png)
 
-  ElevatedButton은 평평한 layout에 깊이감을 주기 위해서 사용한다. 그래서 이미 깊이감이 있는 dialog 혹은 card에는 사용하는 것을 자제해야 한다.
+  ElevatedButton은 평평한 [Layout]에 깊이감을 주기 위해서 사용한다. 그래서 이미 깊이감이 있는 dialog 혹은 card에는 사용하는 것을 자제해야 한다.
   ElevatedButton.icon을 이용해 버튼에 아이콘을 넣을 수 있다.
+  
+  [Layout]: https://flutter-ko.dev/docs/development/ui/widgets/layout
 
   [ElevatedButton]: https://api.flutter.dev/flutter/material/ElevatedButton-class.html    
 -----
@@ -109,8 +111,21 @@
 
   [ButtonBar]: https://api.flutter.dev/flutter/material/ButtonBar-class.html
 ------
- ### 다음은 위의 위젯들을 이용해 만든 간단한 예제이다. 
-소스코드: 
+# 3. Using Material Components
+
+Flutter는 Material design을 따르는 앱을 빌드하는 데 도움이되는 다양한 위젯을 제공한다. Material 앱은 MaterialApp위젯으로 시작 한다. 문자열로 식별되는 위젯 스택을 관리하는 [Navigator]를 포함한 앱의 root에 유용한 여러가지 위젯을 빌드한다. [Navigator]를 사용하면 응용 프로그램 화면간 원활한 전환을 할 수 있다.
+
+[Navigator]: https://api.flutter.dev/flutter/widgets/Navigator-class.html
+      
+참고: [Material Components widgets]과 [Cupertino widgets]을 사용하면 앱을 더 쉽고 예쁘게 만들 수 있다.
+
+[Material Components widgets]: https://flutter-ko.dev/docs/development/ui/widgets/material
+[Cupertino widgets]: https://flutter.dev/docs/development/ui/widgets/cupertino
+
+# 4. 간단한 예제
+다음은 위에서 소개한 위젯들을 이용한 간단한 예제이다. 
+
+소스코드: https://github.com/Somy-John/sight_study_widget/blob/main/lib/main.dart
 
 ```dart
 import 'package:flutter/cupertino.dart';
@@ -167,18 +182,28 @@ class _WidgetTestState extends State<WidgetTest> {
   }
 
   Icon starIcon = Icon(Icons.star);
+```
+counter에 쓰일 함수와 변수, IconButton에 쓰일 아이콘 변수를 생성해 주었다.
+[setState]는 state를 업데이트할 때 쓰는 메소드이다.
+setState를 호출하지 않고 상태를 직접 변경하면 경로에 재빌드가 예약되지 않는다. 즉, 렌더링이 업데이트되지 않는다.
 
+[setState]: https://api.flutter.dev/flutter/widgets/ModalRoute/setState.html
+```dart
   @override
   Widget build(BuildContext context) {
+    //DefaultTabController위젯을 이용할 것이므로 DefaultTabController를 리턴해준다.
     return DefaultTabController(
         length: 3,
         child: Scaffold(
+          //여기서 widget.title은 SightStudy의 home위젯인 widgetTest의 title이다.
             appBar: AppBar(
               title: Text(widget.title),
             ),
+          //
             body: TabBarView(
+              // TabBarView는 chiledren에 배열을 넘겨준다. 배열 안에 위젯들을 구성할 수 있다.
               children: [
-                // 카운터 코드
+                // 카운터의 코드이다.
                 Container(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -206,6 +231,7 @@ class _WidgetTestState extends State<WidgetTest> {
                 )),
 
                 // timePicker 코드
+                // iOS스타일 시간 선택 위젯이다.
                 Container(
                     height: 100,
                     child: CupertinoDatePicker(
@@ -221,6 +247,7 @@ class _WidgetTestState extends State<WidgetTest> {
                     )),
 
                 // 버튼들 코드
+                // onPressed에 버튼이 눌러졌을 때의 동작들을 지정해줄 수 있다.
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 50),
                   child: Column(
@@ -280,6 +307,7 @@ class _WidgetTestState extends State<WidgetTest> {
                           ),
                         ],
                       ),
+                      // ButtonBar를 보여주기 위해 Card를 사용하였다.
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 30.0),
                         child: Card(
@@ -322,6 +350,7 @@ class _WidgetTestState extends State<WidgetTest> {
   }
 }
 
+// DefaultTabController위젯의 bottomNavigationBar 파라미터에 다음 코드를 지정해주면, DefaultTabController를 디자인할 수 있다!
 class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -367,19 +396,3 @@ class BottomBar extends StatelessWidget {
 }
 
 ```
-
-참고링크: [Layouts]
-
-[Layouts]: https://flutter-ko.dev/docs/development/ui/widgets/layout
-
-## 3. Using Material Components
-
-Flutter는 Material design을 따르는 앱을 빌드하는 데 도움이되는 다양한 위젯을 제공한다. Material 앱은 MaterialApp위젯으로 시작 하며 문자열로 식별되는 위젯 스택을 관리하는 '라우트'라고 알려져있는 [Navigator]를 포함한 앱의 root에 유용한 여러가지 위젯을 빌드한다. [Navigator]를 사용하면 응용 프로그램 화면간 원활한 전환을 할 수 있다. MaterialApp 위젯 사용 은 전적으로 선택 사항이지만 좋은 방법이 될 수 있다.
-
-[Navigator]: https://api.flutter.dev/flutter/widgets/Navigator-class.html
-
-   
-      
-참고링크: [Material Components widgets]
-
-[Material Components widgets]: https://flutter-ko.dev/docs/development/ui/widgets/material
