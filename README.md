@@ -80,7 +80,7 @@
       ElevatedButton.icon을 이용해 버튼에 아이콘을 넣을 수 있다.
 
   [ElevatedButton]: https://api.flutter.dev/flutter/material/ElevatedButton-class.html    
-   ---
+   -----
   - [TextButton]
     ![image](https://user-images.githubusercontent.com/63829204/126202845-b21bd698-4e33-44df-b094-85931f66cc33.png)
 
@@ -88,7 +88,7 @@
     ElevateButton과 마찬가지로 TextButton.icon을 이용해 버튼에 아이콘을 넣을 수 있다.
 
   [TextButton]: https://api.flutter.dev/flutter/material/TextButton-class.html
-  ---
+  -----
   - [OutlinedButton]
     ![image](https://user-images.githubusercontent.com/63829204/126203271-06b3c3ce-b6a3-47e2-a1d6-1280b81c0a28.png)
 
@@ -96,14 +96,14 @@
     OutlinedButton.icon을 이용해 버튼에 아이콘을 넣을 수 있다.
     
   [OutlinedButton]: https://api.flutter.dev/flutter/material/OutlinedButton-class.html
-  ---
+  -----
   - [IconButton]
     ![image](https://user-images.githubusercontent.com/63829204/126203425-92d30aab-c251-413f-9483-e47abad20555.png)
 
     icon만으로 이루어진 버튼이다. 다른 버튼들과는 다르게 child가 아니라 icon parameter를 통해 icon을 지정할 수 있다. 또, iconSize를 통해서 버튼의 크기를 조정할 수 있다.
     
   [IconButton]: https://api.flutter.dev/flutter/material/IconButton-class.html
-  ---
+  -----
   - [ButtonBar]
    ![image](https://user-images.githubusercontent.com/63829204/126204618-e0de7c7d-3db2-4ea4-9d1b-170afd20b41f.png)
     ButtonBar는 end-aligned 정렬의 버튼 Row로, button들을 정렬해주는 역할을 한다. 만약 공간이 부족하다면, column으로 layout 된다. 
@@ -120,6 +120,7 @@ import 'package:flutter/material.dart';
 material과 cupertino 페키지를 가져왔다. 
 material은 안드로이드의 UI를 담고있으며,
 cupertino는 iOS의 UI를 담고 있다.
+
 ~~구글에서 아이폰 스타일이라고 할 수 없으니 애플본사가 있는 지역명인 Cupertino라고 했다는 말도 있다.~~
 ```dart
 void main() => runApp(SightStudy());
